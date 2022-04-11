@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import HomePage from './HomePage'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Cuisine from '../componets/Cuisine'

@@ -32,6 +32,11 @@ const Dessert = () => {
         <Splide
           options={{
             perPage: 3,
+            breakpoints: {
+              640: {
+                perPage: 1,
+              },
+            },
             arrows: false,
             pagination: false,
             drag: 'free',

@@ -33,10 +33,16 @@ const Veggie = () => {
         <Splide
           options={{
             perPage: 4,
+            breakpoints: {
+              640: {
+                perPage: 1,
+              },
+            },
             arrows: false,
             pagination: false,
             drag: 'free',
             gap: '2rem',
+            autoplay: true,
           }}
         >
           {veggie.map((recipe) => {

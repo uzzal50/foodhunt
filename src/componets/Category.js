@@ -27,10 +27,13 @@ const Category = () => {
   )
 }
 const List = styled.div`
+  @media (min-width: 768px) {
+    gap: 1.5rem;
+  }
+
   display: flex;
   justify-content: center;
   margin: 2rem 0;
-  gap: 1.5rem;
 `
 const SLink = styled(NavLink)`
   display: flex;

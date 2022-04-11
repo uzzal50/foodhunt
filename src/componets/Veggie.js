@@ -63,6 +63,9 @@ const Card = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
   img {
     border-radius: 2rem;
     position: absolute;

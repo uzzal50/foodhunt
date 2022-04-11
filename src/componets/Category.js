@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 const Category = () => {
+  console.log('category')
   return (
     <List>
       <SLink to='/cuisine/italian'>
@@ -36,17 +37,25 @@ const List = styled.div`
   margin: 2rem 0;
 `
 const SLink = styled(NavLink)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  gap: 0.3rem;
-  background: linear-gradient(35deg, #494949, #313131);
-  width: 6rem;
-  height: 6rem;
-  cursor: pointer;
-  transform: scale(0.8);
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    gap: 0.3rem;
+    background: linear-gradient(35deg, #494949, #313131);
+    width: 6rem;
+
+    height: 6rem;
+    cursor: pointer;
+    transform: scale(0.8);
+    h4 {
+      font-size: 0.8rem;
+    }
+  }
+
+  height: 5rem;
   h4 {
     color: #fff;
     font-size: 1rem;

@@ -1,30 +1,32 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 const RecipieInfo = () => {
   const { id } = useParams()
-  const [recipieInfo, setRecipieInfo] = useState({ extendedIngredients: [] })
+  const [recipieInfo, setRecipieInfo] = useState({})
   const [activeTab, setActiveTab] = useState('instructions')
 
+  const fetchInfo = async (name) => {
+    const { data } = await axios.get(
+      `https://api.spoonacular.com/recipes/${name}/information?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
+    )
+    setRecipieInfo(data)
+  }
+
   useEffect(() => {
-    const fetchInfo = async (name) => {
-      const { data } = await axios.get(
-        `https://api.spoonacular.com/recipes/${name}/information?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
-      )
-      setRecipieInfo(data)
-    }
     fetchInfo(id)
   }, [id])
-
+  console.log(activeTab)
   return (
     <DetailsWrapper>
       <div>
         <h2>{recipieInfo.title}</h2>
         <img src={recipieInfo.image} alt={recipieInfo.title} />
       </div>
-      <Info style={{ marginLeft: '5rem' }}>
+      <Info>
         <Button
           onClick={() => setActiveTab('instructions')}
           className={activeTab === 'instructions' ? 'active' : ''}
@@ -63,8 +65,12 @@ const RecipieInfo = () => {
 }
 
 const DetailsWrapper = styled.div`
-  margin: 5rem 0;
   display: flex;
+  flex-wrap: wrap;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: nowrap;
+  }
   .active {
     background: linear-gradient(35deg, #494949, #313131);
     color: #fff;
@@ -82,16 +88,27 @@ const DetailsWrapper = styled.div`
     margin-top: 2rem;
   }
   img {
-    border-radius: 2rem;
-    max-width: 400px;
-    object-fit: cover;
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    img {
+      border-radius: 2rem;
+      width: 400px;
+      object-fit: cover;
+    }
   }
 `
 const Info = styled.div`
-
-margin-left = 10rem;
+  @media (min-width: 768px) {
+    padding-left: 6rem;
+  }
+  margin-top: 2rem;
 `
 const Button = styled.button`
+  :first-of-type {
+    margin-bottom: 1.5rem;
+  }
+  width: 100%;
   padding: 1rem 2rem;
   color: #313131;
   background: #fff;
@@ -99,6 +116,12 @@ const Button = styled.button`
   margin-right: 2rem;
   font-weight: 600;
   cursor: pointer;
+  @media (min-width: 768px) {
+    width: auto;
+    :first-of-type {
+      margin-bottom: 0;
+    }
+  }
 `
 
 export default RecipieInfo

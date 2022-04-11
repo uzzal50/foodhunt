@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import HomePage from './HomePage'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Cuisine from '../componets/Cuisine'
 import SearchedPage from './SearchedPage'
-import RecipieInfo from './RecipieInfo'
 import { AnimatePresence } from 'framer-motion'
-
+import RecipieInfo from './RecipieInfo'
 export const Pages = () => {
   const location = useLocation()
 
@@ -16,6 +15,7 @@ export const Pages = () => {
         <Route path='cuisine/:type' element={<Cuisine />}></Route>
 
         <Route path='searched/:term' element={<SearchedPage />}></Route>
+
         <Route path='recipie/:id' element={<RecipieInfo />}></Route>
       </Routes>
     </AnimatePresence>

@@ -64,9 +64,7 @@ const Popular = () => {
   )
 }
 
-const Wrapper = styled.div`
-  margin: 4rem 0rem;
-`
+const Wrapper = styled.div``
 const Card = styled.div`
   min-height: 12rem;
   border-radius: 2rem;

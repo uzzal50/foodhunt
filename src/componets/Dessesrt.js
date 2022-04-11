@@ -5,41 +5,40 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import { Link } from 'react-router-dom'
 
-const Veggie = () => {
-  const [veggie, setVeggie] = useState([])
+const Dessert = () => {
+  const [dessert, setDessert] = useState([])
   useEffect(() => {
-    getVeggie()
+    getDessert()
   }, [])
 
-  const getVeggie = async () => {
-    const check = localStorage.getItem('veggie')
+  const getDessert = async () => {
+    const check = localStorage.getItem('dessert')
 
     if (check) {
-      setVeggie(JSON.parse(check))
+      setDessert(JSON.parse(check))
     } else {
       const { data } = await axios.get(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=vegetarian`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=dessert`
       )
-      localStorage.setItem('veggie', JSON.stringify(data.recipes))
-      setVeggie(data.recipes)
-      console.log(data.recipes)
+      localStorage.setItem('dessert', JSON.stringify(data.recipes))
+      setDessert(data.recipes)
     }
   }
 
   return (
     <div>
       <Wrapper>
-        <h3>Vegitarian Picks</h3>
+        <h3>Dessert Picks</h3>
         <Splide
           options={{
-            perPage: 4,
+            perPage: 3,
             arrows: false,
             pagination: false,
             drag: 'free',
             gap: '2rem',
           }}
         >
-          {veggie.map((recipe) => {
+          {dessert.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Link to={`/recipie/${recipe.id}`}>
@@ -100,4 +99,4 @@ const Gradient = styled.div`
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 `
-export default Veggie
+export default Dessert

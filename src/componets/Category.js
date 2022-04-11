@@ -37,28 +37,21 @@ const List = styled.div`
   margin: 2rem 0;
 `
 const SLink = styled(NavLink)`
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    gap: 0.3rem;
-    background: linear-gradient(35deg, #494949, #313131);
-    width: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  gap: 0.3rem;
+  background: linear-gradient(35deg, #494949, #313131);
+  width: 6rem;
 
-    height: 6rem;
-    cursor: pointer;
-    transform: scale(0.8);
-    h4 {
-      font-size: 0.8rem;
-    }
-  }
-
+  cursor: pointer;
+  transform: scale(0.8);
   height: 5rem;
   h4 {
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   svg {
     color: #fff;
@@ -70,6 +63,12 @@ const SLink = styled(NavLink)`
     }
     h4 {
       color: #fff;
+    }
+  }
+  @media (min-width: 768px) {
+    height: 6rem;
+    h4 {
+      font-size: 1rem;
     }
   }
 `

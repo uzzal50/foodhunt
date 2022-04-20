@@ -6,12 +6,12 @@ const Search = () => {
   const [term, setTerm] = useState('')
   const navigate = useNavigate()
   const handleSubmit = (e) => {
-    navigate(`/searched/${term}`)
     e.preventDefault()
+    navigate(`/searched/${term}`)
   }
   return (
     <div>
-      <FormStyle onSubmit={handleSubmit}>
+      <FormStyle onSubmit={() => handleSubmit}>
         <div>
           <FaSearch />
           <input
